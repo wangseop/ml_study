@@ -6,7 +6,7 @@ from keras.layers import Dense
 
 # 1. 데이터
 x_data = np.array([[0,0], [1, 0], [0,1],[1, 1]])
-y_data = [0,0,0,1]
+y_data = [0,1,1,0]
 
 # 2. 모델
 model = Sequential()
@@ -18,6 +18,8 @@ model.add(Dense(12, activation='relu'))
 model.add(Dense(14, activation='relu'))
 model.add(Dense(16, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
+
+# └Layer를 늘린다 -> 미분개념
 
 # └  model 훈련 결과 => 회귀 or 분류, 
 #   └ and, or는 회귀 모델로 표현해도 결과 자체는 분류의 형태를 띠게끔 나타난다. 
@@ -35,5 +37,5 @@ y_predict = model.predict(x_test)
 
 
 print(x_test, "의 예측결과 :", np.round(y_predict))
-print(x_test, "의 예측결과 :", y_predict)
+# print(x_test, "의 예측결과 :", y_predict)
 print("acc =", acc)
