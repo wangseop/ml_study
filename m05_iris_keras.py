@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 # 붓꽃 데이터 읽어 들이기
-iris_data = pd.read_csv("../data/iris.csv", encoding="UTF-8", names=['a','b','c','d','y'])
+iris_data = pd.read_csv("./data/iris.csv", encoding="UTF-8", names=['a','b','c','d','y'])
 print(iris_data)
 print(iris_data.shape)
 print(type(iris_data))
@@ -45,8 +45,8 @@ clf.add(Dense(8, activation='relu'))
 clf.add(Dense(10, activation='relu'))
 clf.add(Dense(3, activation='softmax'))
 
-clf.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-clf.fit(x_train, y_train, epochs=300)
+clf.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+clf.fit(x_train, y_train, epochs=300, batch_size=50)
 
 _, acc = clf.evaluate(x_test, y_test, batch_size=1)
 
@@ -55,3 +55,7 @@ y_pred = clf.predict(x_test)
 print("정답률 :", acc)       # 0.933 ~ 1.0
 print("y_test :", y_test)
 print("y_pred :", np.round(y_pred))
+
+'''
+정답률 : 0.9666666666666667
+'''
