@@ -56,10 +56,20 @@ hyperparameters = create_hyperparameters()
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 
-pipeline = Pipeline([('minmax', MinMaxScaler()), ('model', model)])
+# search = RandomizedSearchCV(estimator=pipeline, param_distributions=hyperparameters,
+#                             n_iter=10, n_jobs=1, cv=5)
+# pipeline = Pipeline([('minmax', MinMaxScaler()), ('model', search)])
+# pipeline.fit(x_train, y_train)
+# ┗ 위 구조처럼 구성해도 실행은 되지만, fitting 과정에서 model에 data를 훈련시키기 전에
+#   전체 x_train에 대해서 Scaler가 적용되어 validation의 검증 시 
+#   validation data도 scaler가 적용이 되어버려 실효성이 떨어지게 된다
+#   따라서 pipeline을 fit 하는 것이 아니라 validation 이 나눠지는 시점 이후로 scaler가 적용되어 validation의 실효성을
+#   높여야 하며, 그러기 위해서 pipeline을 직접 fit하는 것이 아닌 외부로 드러난 모델에 대해서 fitting 과정이 이뤄줘야 한다. 
 
+pipeline = Pipeline([('minmax', MinMaxScaler()), ('model', model)])
 search = RandomizedSearchCV(estimator=pipeline, param_distributions=hyperparameters,
                             n_iter=10, n_jobs=1, cv=5)
+
 
 search.fit(x_train, y_train)
 print(search.best_params_)
