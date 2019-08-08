@@ -39,10 +39,10 @@ def build_model():
 
 def create_hyperparameters():
     criterion = ["mse", "mae"]
-    n_estimators = [100, 200, 400, 800, 1000]
-    max_depth = [100, 200,300,400,500]
-    min_samples_leaf = [1, 5, 10]
-    max_leaf_nodes = [100, 1000, 2000]
+    n_estimators = [225, 1000, 1500]
+    max_depth = [1600]
+    min_samples_leaf = [3]
+    max_leaf_nodes = [100, 125]
     n_jobs = [-1]
     return {"criterion":criterion,"n_estimators":n_estimators, "max_depth":max_depth, 
             "min_samples_leaf":min_samples_leaf, "max_leaf_nodes":max_leaf_nodes,
@@ -63,14 +63,14 @@ print("best_score(x_train) : ",search.best_score_)
 print("test_score(r2) :", search.score(test_x, test_y))
 
 '''
-best_parameters :  {'n_jobs': -1, 'n_estimators': 800, 'min_samples_leaf': 5, 'max_leaf_nodes': 100, 'max_depth': 200, 'criterion': 'mae'}
-best_estimator :  RandomForestRegressor(bootstrap=True, criterion='mae', max_depth=200,
+best_parameters :  {'n_jobs': -1, 'n_estimators': 250, 'min_samples_leaf': 3, 'max_leaf_nodes': 100, 'max_depth': 200, 'criterion': 'mse'}
+best_estimator :  RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=200,
            max_features='auto', max_leaf_nodes=100,
            min_impurity_decrease=0.0, min_impurity_split=None,
-           min_samples_leaf=5, min_samples_split=2,
-           min_weight_fraction_leaf=0.0, n_estimators=800, n_jobs=-1,
+           min_samples_leaf=3, min_samples_split=2,
+           min_weight_fraction_leaf=0.0, n_estimators=250, n_jobs=-1,
            oob_score=False, random_state=None, verbose=0, warm_start=False)
-best_score(x_train) :  0.938333108150564
-test_score(r2) : 0.9151371152304053
+best_score(x_train) :  0.9380923115318133
+test_score(r2) : 0.9175293818620752
 '''
 
