@@ -14,7 +14,7 @@ X_train, X_test, y_train, y_test = train_test_split(cancer.data, cancer.target, 
 # print("테스트 세트 정확도: {:.3f}".format(gb.score(X_test, y_test)))
 
 gb = XGBClassifier(max_depth = 1000, random_state=0, n_estimators=10000, min_samples_leaf=10, 
-                    early_stopping_round=10, n_jobs=-1, learning_rate=0.35, booster='gblinear')
+                    early_stopping_round=10, n_jobs=-1, learning_rate=0.35)
 gb.fit(X_train, y_train)
 print("훈련 세트 정확도: {:.3f}".format(gb.score(X_train, y_train)))
 print("테스트 세트 정확도: {:.3f}".format(gb.score(X_test, y_test)))

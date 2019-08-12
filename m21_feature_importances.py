@@ -18,7 +18,7 @@ print("테스트 세트 정확도: {:.3f}".format(tree.score(X_test, y_test)))
 
 
     
-'''
+
 print("특성 중요도:\n", tree.feature_importances_)
 
 import matplotlib.pyplot as plt
@@ -33,7 +33,7 @@ def plot_feature_importances_cancer(model):
 
 plot_feature_importances_cancer(tree)
 plt.show()
-'''
+
 
 '''
 depth : 1
