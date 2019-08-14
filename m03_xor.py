@@ -22,3 +22,5 @@ y_predict = model.predict(x_test)
 print(x_test, "의 예측결과 :", y_predict)
 print("acc =", accuracy_score([0,1,1,0], y_predict))
 # └ xor는 선 1개로 분류할 수 없다. => 
+
+
